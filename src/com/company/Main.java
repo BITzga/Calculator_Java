@@ -1,6 +1,9 @@
 package com.company;
 
-import com.decalre.*;
+import com.ASTnode.*;
+import com.lexer.Tokens;
+import com.lexer.WordProcess;
+import com.parser.SyntaxProcess;
 
 public class Main {
 
