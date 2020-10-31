@@ -17,7 +17,8 @@ public class WordProcess {
 
     }
 
-    public static boolean isCharater(char c) {
+    public static boolean isCharacter(char c) {
+
         return c == '(' || c == ')' || c == '+'
                 || c == '-' || c == '*' || c == '/' || c == ' ';
 
@@ -38,7 +39,7 @@ public class WordProcess {
         for (int i = 0; i < expr.length(); i++) {
             boolean checkFloat = false;
             // 如果是 + - * / () 存起来 方便后续 中缀转后缀
-            if (isCharater(exp[i])) {
+            if (isCharacter(exp[i])) {
                 StringBuilder tmp = new StringBuilder();
                 tmp.append(exp[i]);
                 switch (exp[i]) {
