@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Vector;
-
 import com.decalre.*;
 
 public class Main {
@@ -11,16 +9,7 @@ public class Main {
         String expr = "1 ";
 
         WordProcess.getTokens(MyTokens, expr);
-//*****
-        /*boolean err_check = wordAnalyze(MyTokens.word, expr);
-        MyTokens.word.add(new Pair(" ",TokenType.EMPTY));
 
-        System.out.println(MyTokens);
-
-        if (err_check == true) {
-            System.out.println("词法正确!");
-        }*/
-//********词法分析
         try {
             Expr exp = getExpr(MyTokens);
             System.out.println(MyTokens.getIndex());
@@ -247,45 +236,4 @@ public class Main {
 
 }
 
-class Pair {
 
-    private String str;
-    private TokenType id;
-
-    public TokenType getId() {
-        return id;
-    }
-
-
-    public String getStr() {
-        return str;
-    }
-
-    Pair(String _str, TokenType _id) {
-        str = _str;
-        id = _id;
-
-    }
-
-    @Override
-    public String toString() {
-
-        return "Token: " + "<" + str + "," + id + ">";
-    }
-
-    @Override
-    public Object clone() {
-        var newObj = new Pair();
-        newObj.id = this.id;
-        newObj.str = this.str;
-        return newObj;
-    }
-
-    Pair() {
-        str = null;
-        id = TokenType.EMPTY;
-
-    }
-
-
-}
