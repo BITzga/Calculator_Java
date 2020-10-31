@@ -5,27 +5,41 @@ import com.lexer.Pair;
 import com.lexer.TokenType;
 import com.lexer.Tokens;
 
+
 public  class SyntaxProcess {
 
-    public static Expr getAST(Tokens MyTokens){
-        Expr exp  = getExpr(MyTokens);
-        try {
+    public static Expr getAST(Tokens MyTokens) {
+
+        try{
+
+            Expr exp  = getExpr(MyTokens);
             System.out.println(MyTokens.getIndex());
             System.out.println(MyTokens.word.size() - 1);
-            if (MyTokens.getIndex() + 1 <= MyTokens.word.size() - 1) {
 
-                throw new SyntaxException("发现多余字符", MyTokens.getIndex() + 1, MyTokens.word.size() - 1);
+            try {
+                if (MyTokens.getIndex() + 1 <= MyTokens.word.size() - 1) {
 
-            } else {
-                System.out.println("语法正确！");
-                System.out.println(exp.toString());
+                    throw new SyntaxException("发现多余字符", MyTokens.getIndex() + 1, MyTokens.word.size() - 1);
 
+                } else {
+                    System.out.println("语法正确！");
+                    System.out.println(exp.toString());
+
+                }
+            }catch (SyntaxException e){
+
+                System.out.println(e);
+              //  return new Expr();
             }
-        } catch (SyntaxException e) {
+            return exp;
+        }catch (SyntaxException e){
 
             System.out.println(e);
+            return new Expr();
+
         }
-    return exp;
+
+    //return exp;
 
     }
     public static void trimSpace(Tokens MyTokens) {
@@ -119,6 +133,8 @@ public  class SyntaxProcess {
 
         } else {
             throw new SyntaxException("此处需要表达式", MyTokensBuff.getIndex() + 1, MyTokensBuff.word.size());
+            //System.out.println(new SyntaxException("此处需要表达式", MyTokensBuff.getIndex() + 1, MyTokensBuff.word.size()));
+            //return null;
         }
 
 
@@ -156,7 +172,8 @@ public  class SyntaxProcess {
                     return Result;
 
                 } else
-                    throw new SyntaxException("此处需要右括号", MyTokensBuff.getIndex(), MyTokensBuff.word.size() - 1);
+                    //System.out.println(new SyntaxException("此处需要右括号", MyTokensBuff.getIndex(), MyTokensBuff.word.size() - 1));
+                    throw  new SyntaxException("此处需要右括号", MyTokensBuff.getIndex(), MyTokensBuff.word.size() - 1);
 
             } else {
                 throw e;
