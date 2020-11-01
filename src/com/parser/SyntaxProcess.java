@@ -23,7 +23,7 @@ public  class SyntaxProcess {
 
                 } else {
                     System.out.println("语法正确！");
-                    System.out.println(exp.toString());
+                   // System.out.println(exp.toString());
 
                 }
             }catch (SyntaxException e){

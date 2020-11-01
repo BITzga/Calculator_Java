@@ -9,11 +9,15 @@ public class Main {
 
     public static void main(String[] args) {
         Tokens MyTokens = new Tokens();
-        String expr =  "(11+1))";
+        String expr =  "(11+ 1）";
+        Expr exp = new Expr();
 
-        WordProcess.getTokens(MyTokens, expr);
-        Expr exp = SyntaxProcess.getAST(MyTokens);
-        System.out.println(":"+exp);
+        boolean check = WordProcess.getTokens(MyTokens, expr);
+        if (check){
+            exp = SyntaxProcess.getAST(MyTokens);
+            System.out.println(":"+exp);
+        }
+        else System.out.println(":"+exp);
     }
 
 }

@@ -5,21 +5,23 @@ import java.util.Vector;
 
 public class WordProcess {
 
-    public static void getTokens(Tokens MyTokens, String expr) {
+    public static boolean getTokens(Tokens MyTokens, String expr) {
         boolean err_check = wordAnalyze(MyTokens.word, expr);
         MyTokens.word.add(new Pair(" ",TokenType.EMPTY));
 
-        System.out.println(MyTokens);
+        //System.out.println(MyTokens);
 
-        if (err_check == true) {
+        if (err_check) {
             System.out.println("词法正确!");
+            System.out.println(MyTokens);
         }
+        return err_check;
 
     }
 
     public static boolean isCharacter(char c) {
 
-        return c == '(' || c == ')' || c == '+'
+        return c=='（'||c=='）'||c == '(' || c == ')' || c == '+'
                 || c == '-' || c == '*' || c == '/' || c == ' ';
 
     }
@@ -43,28 +45,13 @@ public class WordProcess {
                 StringBuilder tmp = new StringBuilder();
                 tmp.append(exp[i]);
                 switch (exp[i]) {
-                    case ' ':
-                        word.add(new Pair(tmp.toString(), TokenType.SPACE));
-                        break;
-                    case '+':
-                        word.add(new Pair(tmp.toString(), TokenType.PLUS));
-                        break;
-                    case '-':
-                        word.add(new Pair(tmp.toString(), TokenType.MINUS));
-                        break;
-                    case '*':
-                        word.add(new Pair(tmp.toString(), TokenType.MULTI));
-                        break;
-                    case '/':
-                        word.add(new Pair(tmp.toString(), TokenType.DIVIDE));
-                        break;
-                    case '(':
-                        word.add(new Pair(tmp.toString(), TokenType.LEFT));
-                        break;
-                    case ')':
-                        word.add(new Pair(tmp.toString(), TokenType.RIGHT));
-                        break;
-
+                    case ' ' -> word.add(new Pair(tmp.toString(), TokenType.SPACE));
+                    case '+' -> word.add(new Pair(tmp.toString(), TokenType.PLUS));
+                    case '-' -> word.add(new Pair(tmp.toString(), TokenType.MINUS));
+                    case '*' -> word.add(new Pair(tmp.toString(), TokenType.MULTI));
+                    case '/' -> word.add(new Pair(tmp.toString(), TokenType.DIVIDE));
+                    case '(', '（' -> word.add(new Pair(tmp.toString(), TokenType.LEFT));
+                    case ')', '）' -> word.add(new Pair(tmp.toString(), TokenType.RIGHT));
                 }
             }
             //存数字
@@ -103,10 +90,15 @@ public class WordProcess {
                 --i;
 
             }
-            //以‘.’开头
+            //以‘.’开头 ||其他符号
             else {
-                TokenException e =  new TokenException("小数前缀不完整！",i);
-                System.out.println(e);
+                if(exp[i]=='.'){
+                    TokenException e =  new TokenException("小数前缀不完整！",i);
+                    System.out.println(e);
+                }else {
+                    TokenException e =  new TokenException("出现非法符号！",i);
+                    System.out.println(e);
+                }
                 return false;
             }
 
