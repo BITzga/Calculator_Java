@@ -5,7 +5,16 @@ package com.ASTnode;
 public class BinaryExpr extends Expr {
 
     private ExprType EType;
-    Expr left,right;
+    public Expr left,right;
+    private Float ResNum;
+
+    public Float getResNum() {
+        return ResNum;
+    }
+
+    public void setResNum(Float resNum) {
+        this.ResNum = resNum;
+    }
 
     public BinaryExpr(){
         this.EType = ExprType.EMPTY;
@@ -13,6 +22,10 @@ public class BinaryExpr extends Expr {
     public BinaryExpr(ExprType EType,Expr left,Expr right){
        this.left = left;
        this.right = right;
+        this.EType = EType;
+    }
+
+    public void setEType(ExprType EType) {
         this.EType = EType;
     }
 
@@ -35,7 +48,8 @@ public class BinaryExpr extends Expr {
     }
     @Override
     public String toString(){
-
+        if(left==null)
+            return ResNum.toString();
       return "("+EType.toString()+left.toString()+" "+right.toString()+")";
 
     }

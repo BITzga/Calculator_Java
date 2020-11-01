@@ -1,7 +1,19 @@
 package com.ASTnode;
 
 public class Expr {
-    public Expr() {
+
+    protected Number mynum;
+    public Expr(Number mynum) {
+        this.mynum = mynum;
+    }
+    public Expr(){
+
+
+
+    }
+
+    public Number getMynum() {
+        return mynum;
     }
 
     @Override

@@ -8,6 +8,7 @@ public class FloatNumExpr extends Expr {
     public FloatNumExpr(Float Fnum) {
         EType = ExprType.FLOAT;
         this.Fnum = Fnum;
+        super.mynum = Fnum;
     }
     public FloatNumExpr(){
         EType = ExprType.EMPTY;
@@ -20,6 +21,7 @@ public class FloatNumExpr extends Expr {
 
     public void setFnum(Float fnum) {
         Fnum = fnum;
+        super.mynum = Fnum;
     }
     public void setSign(int sign){
 

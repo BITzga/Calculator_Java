@@ -13,8 +13,8 @@ public  class SyntaxProcess {
         try{
 
             Expr exp  = getExpr(MyTokens);
-            System.out.println(MyTokens.getIndex());
-            System.out.println(MyTokens.word.size() - 1);
+            System.out.println("MyTokens.getIndex()"+MyTokens.getIndex());
+            System.out.println("MyTokens.word.size()"+MyTokens.word.size());
 
             try {
                 if (MyTokens.getIndex() + 1 <= MyTokens.word.size() - 1) {

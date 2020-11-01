@@ -18,6 +18,7 @@ public class IntNumExpr extends Expr {
     public IntNumExpr(Integer Inum) {
         EType = ExprType.INT;
         this.Inum = Inum;
+        super.mynum = Inum;
     }
     public IntNumExpr(){
         EType = ExprType.EMPTY;
@@ -29,6 +30,7 @@ public class IntNumExpr extends Expr {
 
     public void setInum(Integer inum) {
         Inum = inum;
+        super.mynum = Inum;
     }
 
     public Integer getInum() {
